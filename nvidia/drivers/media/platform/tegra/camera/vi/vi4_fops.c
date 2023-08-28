@@ -208,7 +208,7 @@ static bool vi_notify_wait(struct tegra_channel *chan,
 	 */
 	for (i = 0; i < chan->valid_ports; i++) {
 		err = nvhost_syncpt_wait_timeout_ext(chan->vi->ndev,
-				chan->syncpt[i][SOF_SYNCPT_IDX], thresh[i],
+				chan->syncpt[i][FE_SYNCPT_IDX], thresh[i],
 				chan->timeout, NULL, NULL);
 		if (unlikely(err)) {
 			dev_err(chan->vi->dev,

@@ -547,7 +547,7 @@ static void add_buffer_to_ring(struct tegra_channel *chan,
 
 static void update_state_to_buffer(struct tegra_channel *chan, int state)
 {
-	int save_index = (chan->save_index - PREVIOUS_BUFFER_DEC_INDEX);
+	int save_index = (chan->save_index - 1);
 
 	/* save index decrements by 2 as 3 bufs are added in ring buffer */
 	if (save_index < 0)
@@ -587,8 +587,8 @@ void tegra_channel_ring_buffer(struct tegra_channel *chan,
 	}
 
 	/* release buffer N at N+2 frame start event */
-	if (chan->num_buffers >= (chan->capture_queue_depth - 1))
-		free_ring_buffers(chan, 1);
+	//if (chan->num_buffers >= (chan->capture_queue_depth - 1))
+	free_ring_buffers(chan, 1);
 }
 
 void tegra_channel_ec_close(struct tegra_mc_vi *vi)
